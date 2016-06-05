@@ -42,6 +42,9 @@ class MC:
     def addFrame(self, doc):
         return self.db[FRAMES].insert_one(doc).inserted_id
 
+    def addMultipleFrames(self, docs):
+        return self.db[FRAMES].insert_many(docs, ordered = False)
+
     def getFaceTraceByTraceId(self, id):
         return self.db[FACE_TRACES].find_one({ 'id': id })
 
